@@ -1,0 +1,46 @@
+﻿@model dynamic
+
+@{
+    ViewBag.Title = "title";
+}
+
+<h2>title</h2>
+<div class="panel">
+    <input class="btn btn-success" onclick="callapi()" type="button" value="CallApi" id="callapibtn">
+    <div class="alert alert-info" id="result" role="alert" style="height: 300px"></div>
+</div>
+
+<script type="text/javascript" src="~/Scripts/jquery-1.10.2.js"></script>
+<script type="text/javascript" src="~/Scripts/Home/CallApiJs.js"></script>
+<script type="text/javascript">
+    function CorsTest() {
+        //var url = 'http://webapi.local/api/CustomerApi';
+        //var xhr = createCORSRequest('GET', url);
+        //xhr.send();
+
+        $.ajax({
+            url: "http://webapi.local/api/CustomerApi",
+            type: "GET",
+            dataType: "json",
+            contentType: 'application/json',
+            //data: {},
+            cache: false,
+            traditional: false,
+            success: function (data) {
+                $("#result").val(data);
+            },
+            error: function (xmlHttpRequest, textStatus, errorThrown) {
+                alert("数据加载失败，请联系管理员！");
+            }
+        });
+    }
+
+    var callapi = function callapi() {
+        alert(123);
+    };
+
+    $(function() {
+        //$("#callapibtn").onclick(callapi());
+    });
+
+</script>
