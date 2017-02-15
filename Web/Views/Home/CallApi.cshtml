@@ -6,41 +6,54 @@
 
 <h2>title</h2>
 <div class="panel">
-    <input class="btn btn-success" onclick="callapi()" type="button" value="CallApi" id="callapibtn">
+    <input class="btn btn-success" type="button" value="CallApi_限制访问" id="callapibtn1">
+    <input class="btn btn-success" type="button" value="CallApi_Jsonp" id="callapibtn2">
     <div class="alert alert-info" id="result" role="alert" style="height: 300px"></div>
 </div>
 
 <script type="text/javascript" src="~/Scripts/jquery-1.10.2.js"></script>
-<script type="text/javascript" src="~/Scripts/Home/CallApiJs.js"></script>
+@*<script type="text/javascript" src="~/Scripts/Home/CallApiJs.js"></script>*@
+
 <script type="text/javascript">
-    function CorsTest() {
-        //var url = 'http://webapi.local/api/CustomerApi';
-        //var xhr = createCORSRequest('GET', url);
-        //xhr.send();
-
-        $.ajax({
-            url: "http://webapi.local/api/CustomerApi",
-            type: "GET",
-            dataType: "json",
-            contentType: 'application/json',
-            //data: {},
-            cache: false,
-            traditional: false,
-            success: function (data) {
-                $("#result").val(data);
-            },
-            error: function (xmlHttpRequest, textStatus, errorThrown) {
-                alert("数据加载失败，请联系管理员！");
-            }
+    function callapi() {
+        $.get('http://webapi.local/api/CustomerApi',{},function(data) {
+            $("#result").text(data);
         });
-    }
-
-    var callapi = function callapi() {
-        alert(123);
     };
-
-    $(function() {
-        //$("#callapibtn").onclick(callapi());
+    $(function () {
+        $("#callapibtn1").on('click', function () { callapi(); });
     });
+</script>
+
+<script type="text/javascript">
+    //function CorsTest() {
+    //    //var url = 'http://webapi.local/api/CustomerApi';
+    //    //var xhr = createCORSRequest('GET', url);
+    //    //xhr.send();
+    //}
+    
+    function callapidata(cutomers) {
+        $("#result").text(cutomers[0].Name);
+    }
+    //function callapi() {
+    //    $.ajax({
+    //        url: "http://webapi.local/api/CustomerApi",
+    //        type: "GET",
+    //        dataType: "json",
+    //        contentType: 'application/json',
+    //        //data: {},
+    //        cache: false,
+    //        traditional: false,
+    //        success: function (data) {
+    //            $("#result").text(data);
+    //        },
+    //        error: function (xmlHttpRequest, textStatus, errorThrown) {
+    //            alert("数据加载失败，请联系管理员！");
+    //        }
+    //    });
+    //};
+
 
 </script>
+
+<script type="text/javascript" src="http://webapi.local/api/customerapi/cutomers?callback=callapidata"></script>
