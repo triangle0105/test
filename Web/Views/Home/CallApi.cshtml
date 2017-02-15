@@ -7,8 +7,8 @@
 <h2>title</h2>
 <div class="panel">
     <input class="btn btn-success" type="button" value="CallApi_限制访问" id="callapibtn1">
-    <input class="btn btn-success" type="button" value="CallApi_Jsonp" id="callapibtn2">
-    <div class="alert alert-info" id="result" role="alert" style="height: 300px"></div>
+    <input class="btn btn-success" type="button" value="CallApi_JsonpMediaTypeFormatter" id="callapibtn2">
+    <div class="alert alert-info" id="result" role="alert" style="height: 200px"></div>
 </div>
 
 <script type="text/javascript" src="~/Scripts/jquery-1.10.2.js"></script>
@@ -20,21 +20,29 @@
             $("#result").text(data);
         });
     };
-    $(function () {
-        $("#callapibtn1").on('click', function () { callapi(); });
-    });
-</script>
+    
+    function callapiJsonpMediaTypeFormatter() {
+        $.ajax({
+            Type: "GET",
+            url: "http://webapi.local/api/CustomerApi",
+            dataType: "jsonp",
+            contentType: 'application/json',
+            data:{},
+            success: function (cutomers) {
+                $("#result").text(cutomers[0].Name);
+            },
+            error: function (xmlHttpRequest, textStatus, errorThrown) {
+                alert("数据加载失败，请联系管理员！");
+            }
+        });
+    }
 
-<script type="text/javascript">
     //function CorsTest() {
     //    //var url = 'http://webapi.local/api/CustomerApi';
     //    //var xhr = createCORSRequest('GET', url);
     //    //xhr.send();
     //}
     
-    function callapidata(cutomers) {
-        $("#result").text(cutomers[0].Name);
-    }
     //function callapi() {
     //    $.ajax({
     //        url: "http://webapi.local/api/CustomerApi",
@@ -52,8 +60,18 @@
     //        }
     //    });
     //};
-
-
+    
+    $(function () {
+        $("#callapibtn1").on('click', function () { callapi(); });
+        $("#callapibtn2").on('click', function () { callapiJsonpMediaTypeFormatter(); });
+    });
+    
 </script>
 
-<script type="text/javascript" src="http://webapi.local/api/customerapi/cutomers?callback=callapidata"></script>
+
+@*<script type="text/javascript">
+    function callapidata(cutomers) {
+        $("#result").text(cutomers[0].Name);
+    }
+</script>
+<script type="text/javascript" src="http://webapi.local/api/customerapi/cutomers?callback=callapidata"></script>*@
