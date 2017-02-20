@@ -7,6 +7,7 @@ using System.Web.Mvc;
 using System.Web.Optimization;
 using System.Web.Routing;
 using Web.Helper;
+using WebApi.Helper;
 
 namespace WebApi
 {
@@ -21,6 +22,8 @@ namespace WebApi
             BundleConfig.RegisterBundles(BundleTable.Bundles);
 
             GlobalConfiguration.Configuration.Formatters.Insert(0, new JsonpMediaTypeFormatter());
+
+            GlobalConfiguration.Configuration.MessageHandlers.Add(new CorsMessageHandler());
         }
     }
 }

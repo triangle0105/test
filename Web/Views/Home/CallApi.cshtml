@@ -8,6 +8,7 @@
 <div class="panel">
     <input class="btn btn-success" type="button" value="CallApi_限制访问" id="callapibtn1">
     <input class="btn btn-success" type="button" value="CallApi_JsonpMediaTypeFormatter" id="callapibtn2">
+    <input class="btn btn-success" type="button" value="CallApi_Cors" id="callapibtn3">
     <div class="alert alert-info" id="result" role="alert" style="height: 200px"></div>
 </div>
 
@@ -37,33 +38,34 @@
         });
     }
 
+    function callapiCors() {
+        //$.getJSON("http://webapi.local/api/CustomerApi",{},function(data) {
+        //    $("#result").text(data[0].Name);
+        //});
+        $.ajax({
+            Type: "GET",
+            url: "http://webapi.local/api/CustomerApi",
+            dataType: "josn",
+            contentType: 'application/json',
+            success: function (cutomers) {
+                $("#result").text(cutomers[0].Name);
+            },
+            error: function (xmlHttpRequest, textStatus, errorThrown) {
+                alert(textStatus +"---------"+ errorThrown);
+            }
+        });
+    }
     //function CorsTest() {
     //    //var url = 'http://webapi.local/api/CustomerApi';
     //    //var xhr = createCORSRequest('GET', url);
     //    //xhr.send();
     //}
     
-    //function callapi() {
-    //    $.ajax({
-    //        url: "http://webapi.local/api/CustomerApi",
-    //        type: "GET",
-    //        dataType: "json",
-    //        contentType: 'application/json',
-    //        //data: {},
-    //        cache: false,
-    //        traditional: false,
-    //        success: function (data) {
-    //            $("#result").text(data);
-    //        },
-    //        error: function (xmlHttpRequest, textStatus, errorThrown) {
-    //            alert("数据加载失败，请联系管理员！");
-    //        }
-    //    });
-    //};
     
     $(function () {
         $("#callapibtn1").on('click', function () { callapi(); });
         $("#callapibtn2").on('click', function () { callapiJsonpMediaTypeFormatter(); });
+        $("#callapibtn3").on('click', function () { callapiCors(); });
     });
     
 </script>

@@ -6,6 +6,7 @@ using System.Net.Http;
 using System.Text;
 using System.Web.Http;
 using System.Web.Script.Serialization;
+using WebApi.Filter;
 using WebApi.Models;
 
 namespace WebApi.WebApi
@@ -62,8 +63,8 @@ namespace WebApi.WebApi
         //        Content = new StringContent(content, Encoding.UTF8, "text/javascript")
         //    };
         //}
-
-        public IEnumerable<CustomerModel> Get()
+        [Cors("http://web.local")]
+        public object Get()
         {
             var cutomers = new List<CustomerModel>
             {
@@ -86,6 +87,7 @@ namespace WebApi.WebApi
                     Type = "Type3"
                 }
             };
+            //return Json<IEnumerable<CustomerModel>>(cutomers);
             return cutomers;
         }
        
