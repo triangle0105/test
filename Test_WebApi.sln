@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebApi", "WebApi\WebApi.csp
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Web", "Web\Web.csproj", "{73AA835B-A463-4007-9C0D-9ED48E4060DE}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "table_test", "table_test\table_test.csproj", "{A7F4CB53-A98C-42D9-9E91-F34489EC09EB}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{73AA835B-A463-4007-9C0D-9ED48E4060DE}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{73AA835B-A463-4007-9C0D-9ED48E4060DE}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{73AA835B-A463-4007-9C0D-9ED48E4060DE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A7F4CB53-A98C-42D9-9E91-F34489EC09EB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A7F4CB53-A98C-42D9-9E91-F34489EC09EB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A7F4CB53-A98C-42D9-9E91-F34489EC09EB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A7F4CB53-A98C-42D9-9E91-F34489EC09EB}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
